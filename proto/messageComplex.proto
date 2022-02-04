@@ -1,0 +1,6 @@
+message MessageComplex {
+  required int32 valueInt = 1;
+  required double valueDouble = 2;
+  required string valueString = 3;
+
+}
