@@ -35,7 +35,7 @@ static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_messageComplex_2eproto = nullptr;
 
 const uint32_t TableStruct_messageComplex_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::MessageComplex, _has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::MessageComplex, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -44,12 +44,9 @@ const uint32_t TableStruct_messageComplex_2eproto::offsets[] PROTOBUF_SECTION_VA
   PROTOBUF_FIELD_OFFSET(::MessageComplex, valueint_),
   PROTOBUF_FIELD_OFFSET(::MessageComplex, valuedouble_),
   PROTOBUF_FIELD_OFFSET(::MessageComplex, valuestring_),
-  2,
-  1,
-  0,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 9, -1, sizeof(::MessageComplex)},
+  { 0, -1, -1, sizeof(::MessageComplex)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -58,12 +55,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_messageComplex_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\024messageComplex.proto\"L\n\016MessageComplex"
-  "\022\020\n\010valueInt\030\001 \002(\005\022\023\n\013valueDouble\030\002 \002(\001\022"
-  "\023\n\013valueString\030\003 \002(\t"
+  "\022\020\n\010valueInt\030\001 \001(\005\022\023\n\013valueDouble\030\002 \001(\001\022"
+  "\023\n\013valueString\030\003 \001(\tb\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_messageComplex_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_messageComplex_2eproto = {
-  false, false, 100, descriptor_table_protodef_messageComplex_2eproto, "messageComplex.proto", 
+  false, false, 108, descriptor_table_protodef_messageComplex_2eproto, "messageComplex.proto", 
   &descriptor_table_messageComplex_2eproto_once, nullptr, 0, 1,
   schemas, file_default_instances, TableStruct_messageComplex_2eproto::offsets,
   file_level_metadata_messageComplex_2eproto, file_level_enum_descriptors_messageComplex_2eproto, file_level_service_descriptors_messageComplex_2eproto,
@@ -79,19 +76,6 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDe
 
 class MessageComplex::_Internal {
  public:
-  using HasBits = decltype(std::declval<MessageComplex>()._has_bits_);
-  static void set_has_valueint(HasBits* has_bits) {
-    (*has_bits)[0] |= 4u;
-  }
-  static void set_has_valuedouble(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
-  static void set_has_valuestring(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
-  static bool MissingRequiredFields(const HasBits& has_bits) {
-    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
-  }
 };
 
 MessageComplex::MessageComplex(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -104,14 +88,13 @@ MessageComplex::MessageComplex(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:MessageComplex)
 }
 MessageComplex::MessageComplex(const MessageComplex& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      _has_bits_(from._has_bits_) {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   valuestring_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     valuestring_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_valuestring()) {
+  if (!from._internal_valuestring().empty()) {
     valuestring_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_valuestring(), 
       GetArenaForAllocation());
   }
@@ -160,52 +143,41 @@ void MessageComplex::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    valuestring_.ClearNonDefaultToEmpty();
-  }
-  if (cached_has_bits & 0x00000006u) {
-    ::memset(&valuedouble_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&valueint_) -
-        reinterpret_cast<char*>(&valuedouble_)) + sizeof(valueint_));
-  }
-  _has_bits_.Clear();
+  valuestring_.ClearToEmpty();
+  ::memset(&valuedouble_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&valueint_) -
+      reinterpret_cast<char*>(&valuedouble_)) + sizeof(valueint_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* MessageComplex::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // required int32 valueInt = 1;
+      // int32 valueInt = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _Internal::set_has_valueint(&has_bits);
           valueint_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // required double valueDouble = 2;
+      // double valueDouble = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
-          _Internal::set_has_valuedouble(&has_bits);
           valuedouble_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else
           goto handle_unusual;
         continue;
-      // required string valueString = 3;
+      // string valueString = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_valuestring();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          #ifndef NDEBUG
-          ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "MessageComplex.valueString");
-          #endif  // !NDEBUG
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "MessageComplex.valueString"));
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -226,7 +198,6 @@ const char* MessageComplex::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -240,24 +211,27 @@ uint8_t* MessageComplex::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required int32 valueInt = 1;
-  if (cached_has_bits & 0x00000004u) {
+  // int32 valueInt = 1;
+  if (this->_internal_valueint() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_valueint(), target);
   }
 
-  // required double valueDouble = 2;
-  if (cached_has_bits & 0x00000002u) {
+  // double valueDouble = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_valuedouble = this->_internal_valuedouble();
+  uint64_t raw_valuedouble;
+  memcpy(&raw_valuedouble, &tmp_valuedouble, sizeof(tmp_valuedouble));
+  if (raw_valuedouble != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_valuedouble(), target);
   }
 
-  // required string valueString = 3;
-  if (cached_has_bits & 0x00000001u) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+  // string valueString = 3;
+  if (!this->_internal_valuestring().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_valuestring().data(), static_cast<int>(this->_internal_valuestring().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "MessageComplex.valueString");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_valuestring(), target);
@@ -271,51 +245,34 @@ uint8_t* MessageComplex::_InternalSerialize(
   return target;
 }
 
-size_t MessageComplex::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:MessageComplex)
-  size_t total_size = 0;
-
-  if (_internal_has_valuestring()) {
-    // required string valueString = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_valuestring());
-  }
-
-  if (_internal_has_valuedouble()) {
-    // required double valueDouble = 2;
-    total_size += 1 + 8;
-  }
-
-  if (_internal_has_valueint()) {
-    // required int32 valueInt = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_valueint());
-  }
-
-  return total_size;
-}
 size_t MessageComplex::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:MessageComplex)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
-    // required string valueString = 3;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_valuestring());
-
-    // required double valueDouble = 2;
-    total_size += 1 + 8;
-
-    // required int32 valueInt = 1;
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_valueint());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // string valueString = 3;
+  if (!this->_internal_valuestring().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_valuestring());
+  }
+
+  // double valueDouble = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_valuedouble = this->_internal_valuedouble();
+  uint64_t raw_valuedouble;
+  memcpy(&raw_valuedouble, &tmp_valuedouble, sizeof(tmp_valuedouble));
+  if (raw_valuedouble != 0) {
+    total_size += 1 + 8;
+  }
+
+  // int32 valueInt = 1;
+  if (this->_internal_valueint() != 0) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_valueint());
+  }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
@@ -339,18 +296,18 @@ void MessageComplex::MergeFrom(const MessageComplex& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x00000007u) {
-    if (cached_has_bits & 0x00000001u) {
-      _internal_set_valuestring(from._internal_valuestring());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      valuedouble_ = from.valuedouble_;
-    }
-    if (cached_has_bits & 0x00000004u) {
-      valueint_ = from.valueint_;
-    }
-    _has_bits_[0] |= cached_has_bits;
+  if (!from._internal_valuestring().empty()) {
+    _internal_set_valuestring(from._internal_valuestring());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_valuedouble = from._internal_valuedouble();
+  uint64_t raw_valuedouble;
+  memcpy(&raw_valuedouble, &tmp_valuedouble, sizeof(tmp_valuedouble));
+  if (raw_valuedouble != 0) {
+    _internal_set_valuedouble(from._internal_valuedouble());
+  }
+  if (from._internal_valueint() != 0) {
+    _internal_set_valueint(from._internal_valueint());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -363,7 +320,6 @@ void MessageComplex::CopyFrom(const MessageComplex& from) {
 }
 
 bool MessageComplex::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
   return true;
 }
 
@@ -372,7 +328,6 @@ void MessageComplex::InternalSwap(MessageComplex* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &valuestring_, lhs_arena,

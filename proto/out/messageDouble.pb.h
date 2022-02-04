@@ -93,13 +93,6 @@ class MessageDouble final :
     return *this;
   }
 
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-  }
-
   static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
     return GetDescriptor();
   }
@@ -193,11 +186,7 @@ class MessageDouble final :
   enum : int {
     kValueFieldNumber = 1,
   };
-  // required double value = 1;
-  bool has_value() const;
-  private:
-  bool _internal_has_value() const;
-  public:
+  // double value = 1;
   void clear_value();
   double value() const;
   void set_value(double value);
@@ -213,9 +202,8 @@ class MessageDouble final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   double value_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_messageDouble_2eproto;
 };
 // ===================================================================
@@ -229,17 +217,9 @@ class MessageDouble final :
 #endif  // __GNUC__
 // MessageDouble
 
-// required double value = 1;
-inline bool MessageDouble::_internal_has_value() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  return value;
-}
-inline bool MessageDouble::has_value() const {
-  return _internal_has_value();
-}
+// double value = 1;
 inline void MessageDouble::clear_value() {
   value_ = 0;
-  _has_bits_[0] &= ~0x00000001u;
 }
 inline double MessageDouble::_internal_value() const {
   return value_;
@@ -249,7 +229,7 @@ inline double MessageDouble::value() const {
   return _internal_value();
 }
 inline void MessageDouble::_internal_set_value(double value) {
-  _has_bits_[0] |= 0x00000001u;
+  
   value_ = value;
 }
 inline void MessageDouble::set_value(double value) {
