@@ -1,6 +1,7 @@
-message MessageComplex {
-  required int32 valueInt = 1;
-  required double valueDouble = 2;
-  required string valueString = 3;
+syntax = "proto3";
 
+message MessageComplex {
+  int32 valueInt = 1;
+  double valueDouble = 2;
+  string valueString = 3;
 }
