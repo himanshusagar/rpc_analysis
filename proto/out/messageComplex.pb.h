@@ -93,13 +93,6 @@ class MessageComplex final :
     return *this;
   }
 
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-  }
-
   static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
     return GetDescriptor();
   }
@@ -195,11 +188,7 @@ class MessageComplex final :
     kValueDoubleFieldNumber = 2,
     kValueIntFieldNumber = 1,
   };
-  // required string valueString = 3;
-  bool has_valuestring() const;
-  private:
-  bool _internal_has_valuestring() const;
-  public:
+  // string valueString = 3;
   void clear_valuestring();
   const std::string& valuestring() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -213,11 +202,7 @@ class MessageComplex final :
   std::string* _internal_mutable_valuestring();
   public:
 
-  // required double valueDouble = 2;
-  bool has_valuedouble() const;
-  private:
-  bool _internal_has_valuedouble() const;
-  public:
+  // double valueDouble = 2;
   void clear_valuedouble();
   double valuedouble() const;
   void set_valuedouble(double value);
@@ -226,11 +211,7 @@ class MessageComplex final :
   void _internal_set_valuedouble(double value);
   public:
 
-  // required int32 valueInt = 1;
-  bool has_valueint() const;
-  private:
-  bool _internal_has_valueint() const;
-  public:
+  // int32 valueInt = 1;
   void clear_valueint();
   int32_t valueint() const;
   void set_valueint(int32_t value);
@@ -243,17 +224,13 @@ class MessageComplex final :
  private:
   class _Internal;
 
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
-
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr valuestring_;
   double valuedouble_;
   int32_t valueint_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_messageComplex_2eproto;
 };
 // ===================================================================
@@ -267,17 +244,9 @@ class MessageComplex final :
 #endif  // __GNUC__
 // MessageComplex
 
-// required int32 valueInt = 1;
-inline bool MessageComplex::_internal_has_valueint() const {
-  bool value = (_has_bits_[0] & 0x00000004u) != 0;
-  return value;
-}
-inline bool MessageComplex::has_valueint() const {
-  return _internal_has_valueint();
-}
+// int32 valueInt = 1;
 inline void MessageComplex::clear_valueint() {
   valueint_ = 0;
-  _has_bits_[0] &= ~0x00000004u;
 }
 inline int32_t MessageComplex::_internal_valueint() const {
   return valueint_;
@@ -287,7 +256,7 @@ inline int32_t MessageComplex::valueint() const {
   return _internal_valueint();
 }
 inline void MessageComplex::_internal_set_valueint(int32_t value) {
-  _has_bits_[0] |= 0x00000004u;
+  
   valueint_ = value;
 }
 inline void MessageComplex::set_valueint(int32_t value) {
@@ -295,17 +264,9 @@ inline void MessageComplex::set_valueint(int32_t value) {
   // @@protoc_insertion_point(field_set:MessageComplex.valueInt)
 }
 
-// required double valueDouble = 2;
-inline bool MessageComplex::_internal_has_valuedouble() const {
-  bool value = (_has_bits_[0] & 0x00000002u) != 0;
-  return value;
-}
-inline bool MessageComplex::has_valuedouble() const {
-  return _internal_has_valuedouble();
-}
+// double valueDouble = 2;
 inline void MessageComplex::clear_valuedouble() {
   valuedouble_ = 0;
-  _has_bits_[0] &= ~0x00000002u;
 }
 inline double MessageComplex::_internal_valuedouble() const {
   return valuedouble_;
@@ -315,7 +276,7 @@ inline double MessageComplex::valuedouble() const {
   return _internal_valuedouble();
 }
 inline void MessageComplex::_internal_set_valuedouble(double value) {
-  _has_bits_[0] |= 0x00000002u;
+  
   valuedouble_ = value;
 }
 inline void MessageComplex::set_valuedouble(double value) {
@@ -323,17 +284,9 @@ inline void MessageComplex::set_valuedouble(double value) {
   // @@protoc_insertion_point(field_set:MessageComplex.valueDouble)
 }
 
-// required string valueString = 3;
-inline bool MessageComplex::_internal_has_valuestring() const {
-  bool value = (_has_bits_[0] & 0x00000001u) != 0;
-  return value;
-}
-inline bool MessageComplex::has_valuestring() const {
-  return _internal_has_valuestring();
-}
+// string valueString = 3;
 inline void MessageComplex::clear_valuestring() {
   valuestring_.ClearToEmpty();
-  _has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& MessageComplex::valuestring() const {
   // @@protoc_insertion_point(field_get:MessageComplex.valueString)
@@ -342,7 +295,7 @@ inline const std::string& MessageComplex::valuestring() const {
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
 void MessageComplex::set_valuestring(ArgT0&& arg0, ArgT... args) {
- _has_bits_[0] |= 0x00000001u;
+ 
  valuestring_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:MessageComplex.valueString)
 }
@@ -355,32 +308,22 @@ inline const std::string& MessageComplex::_internal_valuestring() const {
   return valuestring_.Get();
 }
 inline void MessageComplex::_internal_set_valuestring(const std::string& value) {
-  _has_bits_[0] |= 0x00000001u;
+  
   valuestring_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
 inline std::string* MessageComplex::_internal_mutable_valuestring() {
-  _has_bits_[0] |= 0x00000001u;
+  
   return valuestring_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
 inline std::string* MessageComplex::release_valuestring() {
   // @@protoc_insertion_point(field_release:MessageComplex.valueString)
-  if (!_internal_has_valuestring()) {
-    return nullptr;
-  }
-  _has_bits_[0] &= ~0x00000001u;
-  auto* p = valuestring_.ReleaseNonDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (valuestring_.IsDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited())) {
-    valuestring_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  return p;
+  return valuestring_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
 inline void MessageComplex::set_allocated_valuestring(std::string* valuestring) {
   if (valuestring != nullptr) {
-    _has_bits_[0] |= 0x00000001u;
+    
   } else {
-    _has_bits_[0] &= ~0x00000001u;
+    
   }
   valuestring_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), valuestring,
       GetArenaForAllocation());
