@@ -1,0 +1,12 @@
+
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.19.4/protobuf-all-3.19.4.zip
+unzip protobuf-all-3.19.4.zip
+cd protobuf-all-3.19.4
+./configure
+make -j$(nproc) # $(nproc) ensures it uses all cores for compilation
+make check
+sudo make install
+sudo ldconfig # refresh shared library cache.
+cd ../
+cd proto/
+protoc --cpp_out=out/ *.proto
